@@ -1,6 +1,9 @@
 (define init ()
   '())
 
+(define events ()
+  '((event (key-press "q") (\ _ 'quit))))
+
 (define view (state)
   '(block "hello world"
     (stack vertical

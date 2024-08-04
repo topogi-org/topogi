@@ -1,4 +1,4 @@
-use crossterm::event::{self, Event, KeyCode, KeyEventKind};
+use crossterm::event::KeyCode;
 use topogi::App;
 
 pub fn main() {
@@ -10,14 +10,9 @@ pub fn main() {
     let source = std::fs::read_to_string(path).unwrap();
     let mut app = App::new(&source);
 
-    loop {
+    while !app.finished() {
         app.update();
-
-        if let Event::Key(key) = event::read().unwrap() {
-            if key.kind == KeyEventKind::Press && key.code == KeyCode::Char('q') {
-                break;
-            }
-        }
     }
+
     app.exit();
 }

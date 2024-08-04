@@ -441,7 +441,7 @@ dependencies = [
 [[package]]
 name = "topogi-lang"
 version = "0.1.0"
-source = "git+https://github.com/topogi-org/topogi-lang.git?branch=main#ed2ce052006463d3427d21df31fad8c1e2e48fcf"
+source = "git+https://github.com/topogi-org/topogi-lang.git?branch=main#9ba193f6a146d4ad622e5a3b49a976a590f84d51"
 
 [[package]]
 name = "topogi-renderer"
