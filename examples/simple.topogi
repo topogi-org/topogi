@@ -1,0 +1,13 @@
+(define init ()
+  '())
+
+(define view (state)
+  '(block "hello world"
+    (stack vertical
+      ((length 20) (block "1" "hello"))
+      ((length 20) (block "2" "hello"))
+      ((length 20)
+        (block "3"
+          (stack horizontal
+            ((length 20) (block "3-1" "hello"))
+            ((length 20) (block "3-2" "hello"))))))))

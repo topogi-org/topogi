@@ -1,0 +1,14 @@
+[package]
+name = "topogi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.86"
+crossterm = "0.28.1"
+topogi-lang = { git = "https://github.com/topogi-org/topogi-lang.git", branch = "main" }
+topogi-renderer = { git = "https://github.com/topogi-org/topogi-renderer.git", branch = "main" }
+
+[[bin]]
+name = "topogi"
+path = "src/bin/main.rs"
