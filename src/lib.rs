@@ -1,5 +1,5 @@
-use crossterm::event::KeyCode;
-use topogi_lang::ast::{apply, lambda, list, symbol, Exp, Module};
+use crossterm::event::{self, KeyCode};
+use topogi_lang::ast::{apply, lambda, list, quote, symbol, Exp, Module};
 use topogi_renderer::UIEngine;
 
 #[derive(Debug)]
@@ -50,23 +50,13 @@ impl EventKind {
     }
 }
 
-fn add_helper_func(module: &mut Module) {
-    module.set(
-        "add",
-        lambda(
-            "a",
-            lambda("b", apply(symbol("+"), list(&[symbol("a"), symbol("b")]))),
-        ),
-    );
-}
-
 // TOOD: error handling
 impl App {
     pub fn new(source: &str) -> Self {
-        let mut module = topogi_lang::loader::load_module("app", source).unwrap();
+        let module = topogi_lang::loader::load_module("app", source).unwrap();
+        // panic!("{:#?}", module);
         let state = module.run("init", vec![]).unwrap();
         let ui = UIEngine::new().unwrap();
-        add_helper_func(&mut module);
 
         let evnets = module.run("event-listener", vec![]).unwrap();
         let mut event_listeners = vec![];
@@ -88,7 +78,7 @@ impl App {
             return;
         }
 
-        if let Ok(event) = crossterm::event::read() {
+        if let Ok(event) = event::read() {
             for listener in self.event_listeners.clone() {
                 match &listener.kind {
                     EventKind::KeyPress(key) => {
@@ -113,6 +103,7 @@ impl App {
     pub fn update(&mut self) {
         let exp = self.module.run("view", vec![self.state.clone()]).unwrap();
         self.ui.render(&exp).unwrap();
+
         self.poll_event();
     }
 

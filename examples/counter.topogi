@@ -1,5 +1,5 @@
 (define init ()
-  10)
+  0)
 
 (define event-listener ()
   '(((key-press "q") (\ _ 'quit))
@@ -13,4 +13,5 @@
   (- state 1))
 
 (define view (state)
-  (block "hello world" state))
+  (list 'layer (list 'block "counter" state
+    (list 'style (list 'border 'all)))))

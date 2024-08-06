@@ -1,4 +1,3 @@
-use crossterm::event::KeyCode;
 use topogi::App;
 
 pub fn main() {

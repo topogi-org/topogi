@@ -441,12 +441,12 @@ dependencies = [
 [[package]]
 name = "topogi-lang"
 version = "0.1.0"
-source = "git+https://github.com/topogi-org/topogi-lang.git?branch=main#bcf30834806aac42b23c7b55c5df84d3bea40587"
+source = "git+https://github.com/topogi-org/topogi-lang.git?branch=main#76c3b6174feaeb982af66a638b4692c8ad70dd11"
 
 [[package]]
 name = "topogi-renderer"
 version = "0.1.0"
-source = "git+https://github.com/topogi-org/topogi-renderer.git?branch=main#9ee2e069a08a032fb888d1b5ba473e20bd44433f"
+source = "git+https://github.com/topogi-org/topogi-renderer.git?branch=main#cbfcf96bc3e2cae07362915613595d3f5c71df9d"
 dependencies = [
  "ratatui",
  "topogi-lang",

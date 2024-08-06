@@ -1,0 +1,30 @@
+(define init ()
+  false)
+
+(define event-listener ()
+  '(((key-press "q") (\ _ 'quit))))
+
+(define editor-popup (state)
+  (if false 1 2))
+
+(define header ()
+  (list 'block "" "Create New Json"
+        (list 'style (list 'border 'all))))
+
+(define list-items ()
+  (list 'block "" ""))
+
+(define footer ()
+  (list 'stack 'horizontal
+    (list (list 'percentage 50) (list 'block "" "Normal Mode | Not Editing Anything"
+      (list 'style (list 'border 'all))))
+    (list (list 'percentage 50) (list 'block "" "(q) to quit / (e) to make new pair"
+      (list 'style (list 'border 'all))))))
+
+(define view (state)
+  (list 'layer
+    (list 'stack 'vertical
+      (list (list 'length 3) header)
+      (list (list 'min    1) list-items)
+      (list (list 'length 3) footer))
+    (editor-popup state)))
